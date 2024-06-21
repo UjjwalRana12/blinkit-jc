@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.android.blinkitjc"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.android.blinkitjc"
@@ -65,5 +65,6 @@ dependencies {
     androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
+    implementation( "androidx.navigation:navigation-compose:2.7.7")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 }
