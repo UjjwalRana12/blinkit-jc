@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -67,4 +68,22 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling")
     implementation( "androidx.navigation:navigation-compose:2.7.7")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+
+
+    //text dimension
+    implementation("com.intuit.sdp:sdp-android:1.1.0")
+    implementation("com.intuit.ssp:ssp-android:1.1.0")
+
+
+
+    // Import the Firebase BoM
+    implementation(platform("com.google.firebase:firebase-bom:33.1.1"))
+    implementation("com.google.firebase:firebase-analytics")
+    implementation ("com.google.firebase:firebase-auth-ktx")
+    implementation("com.google.android.gms:play-services-auth-api-phone:18.0.1")
+    implementation ("com.google.android.gms:play-services-auth:20.7.0")
+    implementation("com.google.firebase:firebase-storage-ktx")
+    implementation("com.google.firebase:firebase-database-ktx")
+    implementation("com.google.firebase:firebase-messaging-ktx:23.4.0")
 }
