@@ -14,10 +14,9 @@ fun splashScreen(navController: NavHostController) {
         LaunchedEffect(true){
                 delay(500)
 
-                navController.navigate(Routes.Login.routes){
+                navController.navigate(Routes.Otp.routes){
                         popUpTo(navController.graph.startDestinationId)
                         launchSingleTop = true
                 }
         }
-        
 }

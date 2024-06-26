@@ -75,7 +75,7 @@ dependencies {
     implementation("com.intuit.sdp:sdp-android:1.1.0")
     implementation("com.intuit.ssp:ssp-android:1.1.0")
 
-
+    implementation("com.google.accompanist:accompanist-systemuicontroller:0.30.1")
 
     // Import the Firebase BoM
     implementation(platform("com.google.firebase:firebase-bom:33.1.1"))

@@ -1,14 +1,18 @@
 package com.android.blinkitjc.Navigation
 
+import androidx.activity.ComponentActivity
 import androidx.compose.runtime.Composable
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.android.blinkitjc.screens.loginScreen
+import com.android.blinkitjc.screens.PhoneAuthScreen
 import com.android.blinkitjc.screens.splashScreen
+import com.android.blinkitjc.viewmodel.AuthViewModel
 
 @Composable
-fun navGraph(navController: NavHostController){
+fun navGraph(navController: NavHostController,activity: ComponentActivity){
+    val viewModel: AuthViewModel = viewModel()
 
         NavHost(navController = navController, startDestination = Routes.Splash.routes ){
 
@@ -16,8 +20,9 @@ fun navGraph(navController: NavHostController){
                 splashScreen(navController)
             }
 
-            composable(Routes.Login.routes){
-                loginScreen(navController)
+
+            composable(Routes.Otp.routes){
+            PhoneAuthScreen(viewModel =viewModel , activity)
             }
         }
     }
