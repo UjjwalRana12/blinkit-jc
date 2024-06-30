@@ -64,6 +64,7 @@ class AuthViewModel:ViewModel() {
         PhoneAuthProvider.verifyPhoneNumber(options)
     }
 
+
     fun verifyCode(code: String) {
         verificationId?.let {
             val credential = PhoneAuthProvider.getCredential(it, code)
