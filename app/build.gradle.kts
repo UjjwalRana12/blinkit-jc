@@ -88,5 +88,9 @@ dependencies {
         implementation("com.google.firebase:firebase-storage-ktx")
         implementation("com.google.firebase:firebase-database-ktx")
         implementation("com.google.firebase:firebase-messaging-ktx:23.4.0")
+
+
+        //collpasing toolbar
+        implementation("me.onebone:toolbar-compose:2.3.2")
     }
 }
