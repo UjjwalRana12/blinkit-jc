@@ -35,8 +35,7 @@ class MainActivity : ComponentActivity() {
                     SetStatusBarColor()
                     val navController = rememberNavController()
                     navGraph(navController = navController,context as ComponentActivity)
-
-
+                    
                 }
             }
         }
