@@ -7,6 +7,8 @@ sealed class Routes(val routes: String){
     object Home:Routes("home")
     object Otp:Routes("otp")
 
+    object UserActivity:Routes("user_activity")
+
 
 
 }

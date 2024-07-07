@@ -1,5 +1,6 @@
 package com.android.blinkitjc.screens
 
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -10,22 +11,28 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.text.style.TextAlign
+import androidx.navigation.NavHostController
+import com.android.blinkitjc.Navigation.Routes
+import com.android.blinkitjc.Navigation.navGraph
 import com.android.blinkitjc.R
 import com.android.blinkitjc.utils.CommonDialog
 import com.android.blinkitjc.viewmodel.AuthViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PhoneAuthScreen(viewModel: AuthViewModel, activity: ComponentActivity) {
+fun PhoneAuthScreen(viewModel: AuthViewModel, activity: ComponentActivity,navController: NavHostController) {
     val uiState by viewModel.uiState.collectAsState()
     val isLoading by viewModel.isLoading.collectAsState()
     var phoneNumber by remember { mutableStateOf("") }
     var code by remember { mutableStateOf("") }
+
+    val context = LocalContext.current
 
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         when (uiState) {
@@ -143,28 +150,10 @@ fun PhoneAuthScreen(viewModel: AuthViewModel, activity: ComponentActivity) {
                 }
             }
             is AuthViewModel.AuthUiState.Success -> {
-                Box(
-                    contentAlignment = Alignment.Center,
-                    modifier = Modifier.fillMaxSize()
-                ) {
-                    Text(
-                        text = "Authentication Successful!",
-                        fontSize = 20.sp,
-                        color = Color.Green
-                    )
-                }
+               navController.navigate(Routes.UserActivity.routes)
             }
             is AuthViewModel.AuthUiState.Error -> {
-                Box(
-                    contentAlignment = Alignment.Center,
-                    modifier = Modifier.fillMaxSize()
-                ) {
-                    Text(
-                        text = "Error: ${(uiState as AuthViewModel.AuthUiState.Error).message}",
-                        fontSize = 20.sp,
-                        color = Color.Red
-                    )
-                }
+                Toast.makeText(context, "Error: ${(uiState as AuthViewModel.AuthUiState.Error).message}", Toast.LENGTH_LONG).show()
             }
         }
 

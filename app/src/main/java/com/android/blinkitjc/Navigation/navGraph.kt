@@ -9,6 +9,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.android.blinkitjc.screens.PhoneAuthScreen
 import com.android.blinkitjc.screens.splashScreen
+import com.android.blinkitjc.screens.userActivity
 import com.android.blinkitjc.viewmodel.AuthViewModel
 
 @SuppressLint("SuspiciousIndentation")
@@ -19,12 +20,16 @@ fun navGraph(navController: NavHostController,activity: ComponentActivity){
         NavHost(navController = navController, startDestination = Routes.Splash.routes ){
 
             composable(Routes.Splash.routes){
-                splashScreen(navController)
+                splashScreen(navController,viewModel)
             }
 
 
             composable(Routes.Otp.routes){
-            PhoneAuthScreen(viewModel =viewModel , activity)
+            PhoneAuthScreen(viewModel =viewModel , activity,navController)
+            }
+
+            composable(Routes.UserActivity.routes){
+                userActivity(navController)
             }
         }
     }

@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.android.blinkitjc.model.User
 import com.android.blinkitjc.utils.Utils
+import com.google.firebase.Firebase
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.*
@@ -28,6 +29,15 @@ class AuthViewModel : ViewModel() {
 
     private val _isLoading = MutableStateFlow(false)
     val isLoading: StateFlow<Boolean> = _isLoading
+
+    private val _isCurrentUser = MutableStateFlow(false)
+    val isCurrentUser = _isCurrentUser
+
+    init {
+       auth.currentUser?.let {
+           _isCurrentUser.value=true
+       }
+    }
 
     private val callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
