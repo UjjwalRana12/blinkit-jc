@@ -1,5 +1,6 @@
 package com.android.blinkitjc.Navigation
 
+import android.annotation.SuppressLint
 import androidx.activity.ComponentActivity
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -10,6 +11,7 @@ import com.android.blinkitjc.screens.PhoneAuthScreen
 import com.android.blinkitjc.screens.splashScreen
 import com.android.blinkitjc.viewmodel.AuthViewModel
 
+@SuppressLint("SuspiciousIndentation")
 @Composable
 fun navGraph(navController: NavHostController,activity: ComponentActivity){
     val viewModel: AuthViewModel = viewModel()
