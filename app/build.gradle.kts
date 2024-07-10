@@ -92,5 +92,8 @@ dependencies {
 
         //collpasing toolbar
         implementation("me.onebone:toolbar-compose:2.3.2")
+
+        //lazy column
+        implementation ("androidx.compose.foundation:foundation:1.3.0")
     }
 }
