@@ -177,8 +177,7 @@ fun DishGrid() {
         Dish("Sushi", imageResId = R.drawable.blinkit_logo),
     )
     LazyVerticalGrid(
-        columns = GridCells.Fixed(2),
-        horizontalArrangement = Arrangement.spacedBy(4.dp),
+        columns = GridCells.Fixed(3),
     ) {
         items(sampleDishes) { dish ->
             DishCard(dish = sampleDishes)

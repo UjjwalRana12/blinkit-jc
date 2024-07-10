@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -82,8 +83,7 @@ fun SearchBar(
             // Search Input Field
             val (text, setText) = remember { mutableStateOf("") }
             BasicTextField(
-                value = text,
-                onValueChange = { newText ->
+                value = text, onValueChange = { newText ->
                     setText(newText)
                     onSearch(newText)
                 },
@@ -95,8 +95,7 @@ fun SearchBar(
             )
             if (text.isNotEmpty()) {
                 IconButton(
-                    onClick = { setText("") },
-                    modifier = Modifier.size(24.dp)
+                    onClick = { setText("") }, modifier = Modifier.size(24.dp)
                 ) {
                     Icon(
                         imageVector = Icons.Default.Clear,
@@ -112,26 +111,32 @@ fun SearchBar(
 @Composable
 fun DishCard(dish: List<Dish>) {
 
-    Column(
-        modifier = Modifier.wrapContentSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
+    Box(modifier = Modifier.wrapContentSize(), Alignment.Center) {
 
-        Card(modifier = Modifier.wrapContentSize().clip(RoundedCornerShape(12.dp))) {
-            Image(
-                painter = painterResource(id = R.drawable.blinkit_logo),
-                contentDescription = null,
-                modifier = Modifier.size(100.dp).clip(RoundedCornerShape(12.dp))
-            )
+
+        Column(
+            modifier = Modifier.wrapContentSize(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+
+            Card(
+                modifier = Modifier
+                    .wrapContentSize()
+                    .clip(RoundedCornerShape(12.dp))
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.blinkit_logo),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .size(100.dp)
+                        .clip(RoundedCornerShape(12.dp))
+                )
+
+            }
             Text(text = "this is dish name", fontSize = 12.sp)
+
         }
-
     }
-
 }
-@Preview(showBackground = true)
-@Composable
-fun PreviewUserRowItem() {
 
-}
